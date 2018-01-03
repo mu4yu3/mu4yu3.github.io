@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Lich&#39;s Blog</title>
+  
+  <subtitle>Just do IT.</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://mu4yu3.github.io/"/>
+  <updated>2018-01-03T06:53:46.000Z</updated>
+  <id>https://mu4yu3.github.io/</id>
+  
+  <author>
+    <name>Lich</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://mu4yu3.github.io/2018/01/01/hello-world/"/>
+    <id>https://mu4yu3.github.io/2018/01/01/hello-world/</id>
+    <published>2018-01-01T13:45:23.000Z</published>
+    <updated>2018-01-03T06:53:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>多少年了，没有再写过blog。</p><p>当年曾经在<code>M$</code>的<a href="https://zh.wikipedia.org/wiki/Windows_Live_Spaces" target="_blank" rel="noopener">MSN Spaces</a>写过博客。</p><p>后来msn spaces停止服务了，将blog迁移到sina，从那时候开始就很少写了。</p><p>其实也不是写的少，只是不再放在网络上了。</p><h2 id="现在"><a href="#现在" class="headerlink" title="现在"></a>现在</h2><p>最近使用github逐渐变多，对于开源、共享的想法也越来越多。</p><p>想要写点东西的念头又开始萌发。</p><p>“写个blog吧”，对自己说。</p><a id="more"></a><h2 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h2><p>其实写blog也有很多选择。</p><p>继续使用sina的也算；租一个vps，架一个WordPress也可以；或者另找一个第三方托管，比如Blogger。</p><p>但一来需要考虑到在大陆能访问，二来估计访问量较小，三来考虑未来迁移较方便，四来希望能有更多的控制权。</p><p>最终选择了<a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>，作为blog的托管。</p><p>选择了使用<a href="https://github.com/hexojs/hexo" target="_blank" rel="noopener">hexo</a>，作为blog框架。</p><p>选择了<a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">next</a>，作为blog主题。</p><h2 id="未来"><a href="#未来" class="headerlink" title="未来"></a>未来</h2><p>其实这个blog能写多久、写些什么、将来会怎么样，都不太清楚。</p><p>也许只有这一篇，后面就没有了。</p><p>也许会写一些技术相关的文档，也许会写一些自己的感悟。</p><p>也许将来这里会成为一个交流的节点，也许这里只是自己的后花园。</p><p>但无论将来怎样，其实现在做什么才是更重要，更有意义的事儿，不是么？</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;多少年了，没有再写过blog。&lt;/p&gt;
+&lt;p&gt;当年曾经在&lt;code&gt;M$&lt;/code&gt;的&lt;a href=&quot;https://zh.wikipedia.org/wiki/Windows_Live_Spaces&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;MSN Spaces&lt;/a&gt;写过博客。&lt;/p&gt;
+&lt;p&gt;后来msn spaces停止服务了，将blog迁移到sina，从那时候开始就很少写了。&lt;/p&gt;
+&lt;p&gt;其实也不是写的少，只是不再放在网络上了。&lt;/p&gt;
+&lt;h2 id=&quot;现在&quot;&gt;&lt;a href=&quot;#现在&quot; class=&quot;headerlink&quot; title=&quot;现在&quot;&gt;&lt;/a&gt;现在&lt;/h2&gt;&lt;p&gt;最近使用github逐渐变多，对于开源、共享的想法也越来越多。&lt;/p&gt;
+&lt;p&gt;想要写点东西的念头又开始萌发。&lt;/p&gt;
+&lt;p&gt;“写个blog吧”，对自己说。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
