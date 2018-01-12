@@ -90,7 +90,7 @@
 <meta property="og:site_name" content="Lich&#39;s Blog">
 <meta property="og:description" content="最近遇到这样一个需求： 某USB设备（不限种类），物理上插在某A机器上，需要在某B系统中使用，而这个B系统，运行在某台服务器C的虚拟化环境中。A、B、C系统可以通过网络相互访问。 这是前提。 再具体一下，A的系统可以不限定windows或者linux，B系统限定为windows，版本限定在7或更高版本。另外，C系统所用虚拟化技术不限，可以考虑kvm、或者vmware、甚至virtualbox也可以">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-10T05:18:16.000Z">
+<meta property="og:updated_time" content="2018-01-12T16:20:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="USB redirection 的实验记录">
 <meta name="twitter:description" content="最近遇到这样一个需求： 某USB设备（不限种类），物理上插在某A机器上，需要在某B系统中使用，而这个B系统，运行在某台服务器C的虚拟化环境中。A、B、C系统可以通过网络相互访问。 这是前提。 再具体一下，A的系统可以不限定windows或者linux，B系统限定为windows，版本限定在7或更高版本。另外，C系统所用虚拟化技术不限，可以考虑kvm、或者vmware、甚至virtualbox也可以">
@@ -288,6 +288,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/10/usb_redirection/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/10/usb_redirection/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -440,6 +451,16 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
 
   
 
@@ -716,6 +737,26 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://lichs-blog.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://mu4yu3.github.io/2018/01/10/usb_redirection/';
+          this.page.identifier = '2018/01/10/usb_redirection/';
+          this.page.title = 'USB redirection 的实验记录';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://lichs-blog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -728,10 +769,6 @@
   
 
 
-
-
-
-  
 
 
 
