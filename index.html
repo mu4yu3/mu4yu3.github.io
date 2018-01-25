@@ -253,6 +253,153 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mu4yu3.github.io/2018/01/22/smart_home/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lich">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lich's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/22/smart_home/" itemprop="url">智能家庭</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-22T20:02:53+08:00">
+                2018-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/22/smart_home/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/22/smart_home/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>家里有闲置的Android设备，有不限时、不限流量、拥有公网IP的宽带，总想着把它们利用起来。</p>
+<p>Android基于一个修改版的linux内核，有大把的开源软件可以运行在这个操作系统上。</p>
+<p>然而有一个问题，就是锂电池的使用与寿命，虽说是闲置、淘汰了的Android设备，但始终插着电源线充电显然不妥。</p>
+<p>比较理想的方式是，建立一个自动化的充电机制：</p>
+<p><strong>Android设备始终插着电源线，但并不是始终充电。当电池电量低（低于20%）时，能够自动启动充电，而电量高（超过90%）时，自动关闭充电。</strong></p>
+<p>最初使用了一个<a href="https://www.mi.com/mj-socket/" target="_blank" rel="noopener">米家智能插座 基础版</a>来实现。</p>
+<p>这里吐槽一下<a href="https://home.mi.com/" target="_blank" rel="noopener">米家</a>app，触发插座开关的可选项实在是太少，也没有提供公开的API。</p>
+<p>无奈已经买了硬件，自己挖的坑，自己填。</p>
+<p>过程不细说了（如果有感兴趣的读者留言，可以考虑另外写一篇），结果是：</p>
+<p>使用Android下的busybox中的crontab，周期性的检查 <code>/sys/class/power_supply/battery</code> 下的电量信息。</p>
+<p>通过shell脚本，判断电量后，使用 <code>adb input keyevent</code> 和 <code>adb input swipe</code> 模拟屏幕操作。</p>
+<p>使用米家app，把智能插座usb口的开关，放两个快捷方式在Android的桌面上，通过模拟屏幕操作点击。</p>
+<p>如此实现了自动化充电的机制，这时可以把Android设备视作一个linux server，或者说，更像是一个Raspberry Pi，可以放飞自我了。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/22/smart_home/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mu4yu3.github.io/2018/01/10/usb_redirection/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -573,7 +720,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -586,7 +733,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
