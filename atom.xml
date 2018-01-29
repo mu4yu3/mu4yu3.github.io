@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mu4yu3.github.io/"/>
-  <updated>2018-01-24T15:20:29.000Z</updated>
+  <updated>2018-01-29T03:33:49.000Z</updated>
   <id>https://mu4yu3.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Let’s Encrypt的泛域名支持</title>
+    <link href="https://mu4yu3.github.io/2018/01/29/letsencrypt_wildcard_certificates/"/>
+    <id>https://mu4yu3.github.io/2018/01/29/letsencrypt_wildcard_certificates/</id>
+    <published>2018-01-29T03:33:46.000Z</published>
+    <updated>2018-01-29T03:33:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>一直记着2018年1月，Let’s Encrypt将添加泛域名的支持。</p><p>因为之前的证书到2月1日到期，所以也没有及时更新。</p><p>刚刚准备更新证书的时候发现，<a href="https://certbot.eff.org/faq/#will-let-s-encrypt-issue-wildcard-certificates" target="_blank" rel="noopener">certbot</a>还没有支持泛域名。</p><p>查了一下，原来Let’s Encrypt在<a href="https://letsencrypt.org/2017/07/06/wildcard-certificates-coming-jan-2018.html" target="_blank" rel="noopener">1月4日放出了一个公共测试api，到2月27日才完全可用</a>。</p><p>总觉得存在疑似“跳票”行为，不过也有可能是自己误解了。</p><p>好吧，继续耐心等待就好。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;一直记着2018年1月，Let’s Encrypt将添加泛域名的支持。&lt;/p&gt;
+&lt;p&gt;因为之前的证书到2月1日到期，所以也没有及时更新。&lt;/p&gt;
+&lt;p&gt;刚刚准备更新证书的时候发现，&lt;a href=&quot;https://certbot.eff.org/faq/#will-let-
+      
+    
+    </summary>
+    
+    
+      <category term="Let’s Encrypt" scheme="https://mu4yu3.github.io/tags/Let%E2%80%99s-Encrypt/"/>
+    
+      <category term="Wildcard Certificates" scheme="https://mu4yu3.github.io/tags/Wildcard-Certificates/"/>
+    
+      <category term="泛域名" scheme="https://mu4yu3.github.io/tags/%E6%B3%9B%E5%9F%9F%E5%90%8D/"/>
+    
+  </entry>
   
   <entry>
     <title>智能家庭</title>
