@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mu4yu3.github.io/"/>
-  <updated>2018-03-15T14:07:18.000Z</updated>
+  <updated>2018-03-21T13:05:12.000Z</updated>
   <id>https://mu4yu3.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>certbot的泛域名支持</title>
+    <link href="https://mu4yu3.github.io/2018/03/21/certbot_wildcard_certificates/"/>
+    <id>https://mu4yu3.github.io/2018/03/21/certbot_wildcard_certificates/</id>
+    <published>2018-03-21T13:05:09.000Z</published>
+    <updated>2018-03-21T13:05:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>距离Let’s Encrypt添加泛域名的支持已经有一段时间了。</p><p>今天尝试使用了certbot申请。</p><a id="more"></a><h2 id="首次尝试"><a href="#首次尝试" class="headerlink" title="首次尝试"></a>首次尝试</h2><p>一般来说，第一次不成功的概率很高。</p><p>这次也不例外。甩出了一句报错：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The currently selected ACME CA endpoint does not support issuing wildcard certificates.</span><br></pre></td></tr></table></figure><p>难道是certbot还没有支持泛域名么？</p><h2 id="查查看"><a href="#查查看" class="headerlink" title="查查看"></a>查查看</h2><p>大家都知道，不成功的时候，查官方文档就对了。</p><p>果然在<a href="https://certbot.eff.org/docs/install.html?highlight=wildcard" target="_blank" rel="noopener">官方文档</a>中，有这样一段话：</p><blockquote><p>If you would like to obtain a wildcard certificate from Let’s Encrypt’s ACMEv2 server,<br>you’ll need to include <code>--server https://acme-v02.api.letsencrypt.org/directory</code> on the command line as well.</p></blockquote><p>所以这时候，将使用的命令改为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm --name certbot \</span><br><span class="line">-v &quot;/opt/docker/certbot/etc/letsencrypt:/etc/letsencrypt&quot; \</span><br><span class="line">-v &quot;/opt/docker/certbot/var/lib/letsencrypt:/var/lib/letsencrypt&quot; \</span><br><span class="line">certbot/certbot \</span><br><span class="line">certonly \</span><br><span class="line">--server https://acme-v02.api.letsencrypt.org/directory \</span><br><span class="line">--manual \</span><br><span class="line">--preferred-challenges dns</span><br></pre></td></tr></table></figure><p>果然，这样就可以成功申请类似 <code>*.test.com</code> 这样泛域名的证书了。</p><h2 id="补充说明"><a href="#补充说明" class="headerlink" title="补充说明"></a>补充说明</h2><p>如果被运营商屏蔽了80、443端口，可以使用 <code>--preferred-challenges dns</code>。</p><p>这样只需要在DNS记录中，增加一条 <code>_acme-challenge.test.com</code> 的txt记录，可以避开端口认证，申请证书。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;距离Let’s Encrypt添加泛域名的支持已经有一段时间了。&lt;/p&gt;
+&lt;p&gt;今天尝试使用了certbot申请。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Let’s Encrypt" scheme="https://mu4yu3.github.io/tags/Let%E2%80%99s-Encrypt/"/>
+    
+      <category term="certbot" scheme="https://mu4yu3.github.io/tags/certbot/"/>
+    
+      <category term="Wildcard Certificates" scheme="https://mu4yu3.github.io/tags/Wildcard-Certificates/"/>
+    
+      <category term="泛域名" scheme="https://mu4yu3.github.io/tags/%E6%B3%9B%E5%9F%9F%E5%90%8D/"/>
+    
+  </entry>
   
   <entry>
     <title>如何挑选手机</title>
@@ -35,6 +62,12 @@
     
     
       <category term="smartphone" scheme="https://mu4yu3.github.io/tags/smartphone/"/>
+    
+      <category term="android" scheme="https://mu4yu3.github.io/tags/android/"/>
+    
+      <category term="iPhone" scheme="https://mu4yu3.github.io/tags/iPhone/"/>
+    
+      <category term="lineageOS" scheme="https://mu4yu3.github.io/tags/lineageOS/"/>
     
   </entry>
   
