@@ -91,7 +91,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://mu4yu3.github.io/images/variance_matrix.png">
 <meta property="og:image" content="https://mu4yu3.github.io/images/variance_normal.png">
-<meta property="og:updated_time" content="2018-06-14T13:38:47.000Z">
+<meta property="og:updated_time" content="2018-06-15T15:21:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="百万摇号 + 统计学 = 购房摇号合理质疑（系列1）">
 <meta name="twitter:description" content="缘起最近南京佳兆业开盘，在南京公证处摇号。12524个报名，摇475个房源，约3.8%中签率。 利益相关，本文作者也参与了本次摇号，结果排在半数之后，买房无缘。 本来此事已经了结，但一个想法开始在脑海中萦绕：“就算是公证处的摇号，一定公平公正么？” 用数学的语言来说：这次的摇号结果，是真随机的么 ？ 本着科学 怀疑一切 的精神，开始 大胆假设，小心求证 。 大胆假设摇号有内幕，有内定号，那么这个摇">
@@ -345,7 +345,8 @@
 <a id="more"></a>
 <h2 id="太长不看版"><a href="#太长不看版" class="headerlink" title="太长不看版"></a>太长不看版</h2><p>通过数学的方法，通过方差值，可以观察一组数据的<a href="https://zh.wikipedia.org/wiki/随机性" target="_blank" rel="noopener">随机性</a>。</p>
 <p>一个真随机组合，会符合一定的<a href="https://zh.wikipedia.org/wiki/概率分布" target="_blank" rel="noopener">概率分布</a>。相反，如果不符合概率分布，则有很大可能性，是<a href="https://zh.wikipedia.org/wiki/伪随机性" target="_blank" rel="noopener">伪随机</a>组合。</p>
-<p>在摇号这件事情上，<strong>伪随机</strong> 约等于 <strong>有人为干预</strong> 约等于 <strong>有内幕交易</strong>。</p>
+<p>请注意：在摇号这件事情上，<strong>伪随机</strong> 不完全等于 <strong>有人为干预</strong> 更不完全等于 <strong>有内幕交易</strong>。</p>
+<p>比如程序设计bug，算法bug、硬件bug，都有可能造成 <strong>伪随机</strong>。</p>
 <p>概率分布通常符合正态分布，可以用一个简单、粗暴的方式，得出近似值。就是多次尝试，比如，尝试 <strong>一百万次</strong> ！</p>
 <p>那么根据本次摇号的随机性（方差值），可能会有2种情况：</p>
 <ol>
@@ -367,7 +368,7 @@
 </ul>
 </blockquote>
 <p>特别提示：前者是千分之3.2，后者是百分之3.8</p>
-<p>合理的动机（利益驱使） + 真随机可能性极小 + 伪随机可能性大 + 趋向于“不公平” = 文章标题上所写的 <strong>合理质疑</strong>，热烈欢迎更有能力的人士指正错误。</p>
+<p>真随机可能性极小 + 伪随机可能性大 + 趋向于“不公平” = 文章标题上所写的 <strong>合理质疑</strong>，热烈欢迎更有能力的人士指正错误。</p>
 <p>计算和过程可以看下面的章节。本文所有使用的工具、程序、算法，均开源。有兴趣的读者可以重复实验。</p>
 <p>不耐烦看数学过程的，可以直接拖到最后看图，有图有真相。</p>
 <h2 id="百万摇号实验过程"><a href="#百万摇号实验过程" class="headerlink" title="百万摇号实验过程"></a>百万摇号实验过程</h2><h3 id="数据来源"><a href="#数据来源" class="headerlink" title="数据来源"></a>数据来源</h3><p>目前在南京公证处官网上，有<a href="http://njnotary.cn/staticfiles/wwwnews/20180613/1188.html" target="_blank" rel="noopener">结果公示</a>。</p>
@@ -428,6 +429,8 @@
 <li>在 <strong>真随机</strong> 摇号中，出现本次摇号情况的概率约为3.2‰，非常低。远低于本次摇号的中签率（约3.8%）</li>
 <li>在 <strong>真随机</strong> 摇号中，出现本次摇号情况，再加上比本地摇号更“不公平”的情况，累计的可能性大约为3.4‰</li>
 </ul>
+<p>再次强调一下：在摇号这件事情上，<strong>伪随机</strong> 不完全等于 <strong>有人为干预</strong> 更不完全等于 <strong>有内幕交易</strong>。</p>
+<p>本文在 <strong>合理质疑</strong> 摇号的 <strong>随机性</strong>。不针对 <strong>是否有内幕</strong> 提出任何质疑。</p>
 <h2 id="以为这就结束了？其实还没有。"><a href="#以为这就结束了？其实还没有。" class="headerlink" title="以为这就结束了？其实还没有。"></a>以为这就结束了？其实还没有。</h2><p>未完待续……</p>
 
       
