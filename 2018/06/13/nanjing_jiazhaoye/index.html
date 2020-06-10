@@ -1,338 +1,234 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"mu4yu3.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="摇号,随机性,方差,python,统计学,佳兆业," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Lich's Blog" type="application/atom+xml" />
-
-
-
-
-
-
-<meta name="description" content="缘起最近南京佳兆业开盘，在南京公证处摇号。12524个报名，摇475个房源，约3.8%中签率。 利益相关，本文作者也参与了本次摇号，结果排在半数之后，买房无缘。 本来此事已经了结，但一个想法开始在脑海中萦绕：“就算是公证处的摇号，一定公平公正么？” 用数学的语言来说：这次的摇号结果，是真随机的么 ？ 本着科学 怀疑一切 的精神，开始 大胆假设，小心求证 。 大胆假设摇号有内幕，有内定号，那么这个摇">
-<meta name="keywords" content="摇号,随机性,方差,python,统计学,佳兆业">
+  <meta name="description" content="缘起最近南京佳兆业开盘，在南京公证处摇号。12524个报名，摇475个房源，约3.8%中签率。 利益相关，本文作者也参与了本次摇号，结果排在半数之后，买房无缘。 本来此事已经了结，但一个想法开始在脑海中萦绕：“就算是公证处的摇号，一定公平公正么？” 用数学的语言来说：这次的摇号结果，是真随机的么 ？ 本着科学 怀疑一切 的精神，开始 大胆假设，小心求证 。 大胆假设摇号有内幕，有内定号，那么这个摇">
 <meta property="og:type" content="article">
-<meta property="og:title" content="百万摇号 + 统计学 = 购房摇号合理质疑">
+<meta property="og:title" content="百万摇号 + 统计学 &#x3D; 购房摇号合理质疑">
 <meta property="og:url" content="https://mu4yu3.github.io/2018/06/13/nanjing_jiazhaoye/index.html">
 <meta property="og:site_name" content="Lich&#39;s Blog">
 <meta property="og:description" content="缘起最近南京佳兆业开盘，在南京公证处摇号。12524个报名，摇475个房源，约3.8%中签率。 利益相关，本文作者也参与了本次摇号，结果排在半数之后，买房无缘。 本来此事已经了结，但一个想法开始在脑海中萦绕：“就算是公证处的摇号，一定公平公正么？” 用数学的语言来说：这次的摇号结果，是真随机的么 ？ 本着科学 怀疑一切 的精神，开始 大胆假设，小心求证 。 大胆假设摇号有内幕，有内定号，那么这个摇">
-<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://mu4yu3.github.io/images/variance_matrix.png">
-<meta property="og:image" content="https://mu4yu3.github.io/images/variance_normal.png">
-<meta property="og:updated_time" content="2018-06-15T15:21:53.000Z">
+<meta property="og:image" content="https://mu4yu3.github.io/2018/06/13/nanjing_jiazhaoye/%5Cimages%5Cvariance_normal.png">
+<meta property="article:published_time" content="2018-06-13T15:03:39.000Z">
+<meta property="article:modified_time" content="2018-06-15T15:21:53.000Z">
+<meta property="article:author" content="Lich">
+<meta property="article:tag" content="摇号">
+<meta property="article:tag" content="随机性">
+<meta property="article:tag" content="方差">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="统计学">
+<meta property="article:tag" content="佳兆业">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="百万摇号 + 统计学 = 购房摇号合理质疑">
-<meta name="twitter:description" content="缘起最近南京佳兆业开盘，在南京公证处摇号。12524个报名，摇475个房源，约3.8%中签率。 利益相关，本文作者也参与了本次摇号，结果排在半数之后，买房无缘。 本来此事已经了结，但一个想法开始在脑海中萦绕：“就算是公证处的摇号，一定公平公正么？” 用数学的语言来说：这次的摇号结果，是真随机的么 ？ 本着科学 怀疑一切 的精神，开始 大胆假设，小心求证 。 大胆假设摇号有内幕，有内定号，那么这个摇">
 <meta name="twitter:image" content="https://mu4yu3.github.io/images/variance_matrix.png">
 
+<link rel="canonical" href="https://mu4yu3.github.io/2018/06/13/nanjing_jiazhaoye/">
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
   };
 </script>
 
-
-
-  <link rel="canonical" href="https://mu4yu3.github.io/2018/06/13/nanjing_jiazhaoye/"/>
-
-
-
-
-
   <title>百万摇号 + 统计学 = 购房摇号合理质疑 | Lich's Blog</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112234259-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-112234259-1');
+      }
+    </script>
 
 
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-112234259-1', 'auto');
-  ga('send', 'pageview');
-</script>
 
 
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Lich's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-      
-        <p class="site-subtitle">Just do IT.</p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lich's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Just do IT.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
+
+
+
 <nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
+  <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
 
-      
-    </ul>
-  
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
-  
+  </li>
+  </ul>
 </nav>
 
 
 
- </div>
+
+</div>
     </header>
 
-    <main id="main" class="main">
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
+          
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://mu4yu3.github.io/2018/06/13/nanjing_jiazhaoye/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lich">
-      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.JPG">
+      <meta itemprop="name" content="Lich">
+      <meta itemprop="description" content="IT">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Lich's Blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">百万摇号 + 统计学 = 购房摇号合理质疑</h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          百万摇号 + 统计学 = 购房摇号合理质疑
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-13T23:03:39+08:00">
-                2018-06-13
-              </time>
-            
+              <span class="post-meta-item-text">Posted on</span>
 
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
+              <time title="Created: 2018-06-13 23:03:39" itemprop="dateCreated datePublished" datetime="2018-06-13T23:03:39+08:00">2018-06-13</time>
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
+                  <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <a href="/2018/06/13/nanjing_jiazhaoye/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/06/13/nanjing_jiazhaoye/" itemprop="commentCount"></span>
-                </a>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2018-06-15 23:21:53" itemprop="dateModified" datetime="2018-06-15T23:21:53+08:00">2018-06-15</time>
               </span>
-            
-          
 
           
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/06/13/nanjing_jiazhaoye/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/13/nanjing_jiazhaoye/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-      
 
       
         <h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>最近南京佳兆业开盘，在<a href="http://njnotary.cn/staticfiles/wwwnews/20180613/1187.html" target="_blank" rel="noopener">南京公证处摇号</a>。12524个报名，摇475个房源，约3.8%中签率。</p>
@@ -343,6 +239,7 @@
 <p>大胆假设摇号有内幕，有内定号，那么这个摇号结果，和 <strong>真随机</strong> 的结果会有什么差异？</p>
 <p>于是就有了本文。</p>
 <a id="more"></a>
+
 <h2 id="太长不看版"><a href="#太长不看版" class="headerlink" title="太长不看版"></a>太长不看版</h2><p>通过数学的方法，通过方差值，可以观察一组数据的<a href="https://zh.wikipedia.org/wiki/随机性" target="_blank" rel="noopener">随机性</a>。</p>
 <p>一个真随机组合，会符合一定的<a href="https://zh.wikipedia.org/wiki/概率分布" target="_blank" rel="noopener">概率分布</a>。相反，如果不符合概率分布，则有很大可能性，是<a href="https://zh.wikipedia.org/wiki/伪随机性" target="_blank" rel="noopener">伪随机</a>组合。</p>
 <p>请注意：在摇号这件事情上，<strong>伪随机</strong> 不完全等于 <strong>有人为干预</strong> 更不完全等于 <strong>有内幕交易</strong>。</p>
@@ -375,6 +272,7 @@
 <p>有附件<a href="http://njnotary.cn/staticfiles/wwwnews/20180613/1188.html" target="_blank" rel="noopener">《城市水岸花园15幢、16幢、17幢商品住房选房顺序号公证摇号结果.pdf》</a>供下载。</p>
 <p>以下分析全部基于该pdf文档。提取文件特征信息如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">du -b 180613_003.pdf</span><br><span class="line">395127  180613_003.pdf</span><br><span class="line"></span><br><span class="line">md5sum 180613_003.pdf</span><br><span class="line">5ae279c4d816ee53717098adb55fea87</span><br><span class="line"></span><br><span class="line">sha1sum 180613_003.pdf</span><br><span class="line">b76af85a83c05e7a263fb942ae84745f5c26d376</span><br><span class="line"></span><br><span class="line">sha256sum 180613_003.pdf</span><br><span class="line">430d13d91d31c4f3d0e1281f3f3749caefdcdf21fd22535aafa7d81d78a84b87</span><br></pre></td></tr></table></figure>
+
 <h3 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h3><p>本次摇号，一共有12524个报名，最后摇出12524个号。</p>
 <p>大胆假设，有内幕，我要求内定号，那么需要做到：</p>
 <ol>
@@ -401,7 +299,9 @@
 <p>这方差值是：<strong><em>20.740894901144642</em></strong>，请记住这个值，后面还会用到。</p>
 <p>接下来，就是百万摇号登场。</p>
 <h3 id="人生苦短，我用python"><a href="#人生苦短，我用python" class="headerlink" title="人生苦短，我用python"></a>人生苦短，我用python</h3><p>以下开放源码。</p>
-<h4 id="首先设计一个-真随机-的模拟摇号程序"><a href="#首先设计一个-真随机-的模拟摇号程序" class="headerlink" title="首先设计一个 真随机 的模拟摇号程序"></a>首先设计一个 <strong>真随机</strong> 的模拟摇号程序</h4><p>lottery.py<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line">import random</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    base_path=os.path.abspath(&apos;.&apos;)</span><br><span class="line">    raw_data_path=os.path.join( base_path, &apos;raw_data&apos;)</span><br><span class="line"></span><br><span class="line">    if not os.path.exists(raw_data_path):</span><br><span class="line">        os.mkdir(raw_data_path)</span><br><span class="line"></span><br><span class="line">    for num in range(1,1000001):</span><br><span class="line">        with open(raw_data_path + &apos;/&apos; + str(num) + &apos;.csv&apos;, &apos;w&apos;) as csv_file:</span><br><span class="line">            pass</span><br><span class="line"></span><br><span class="line">        with open(raw_data_path + &apos;/&apos; + str(num) + &apos;.csv&apos;, &apos;a&apos;) as csv_file:</span><br><span class="line">            a=list(range(1,12525))</span><br><span class="line">            for x in range(1,12525):</span><br><span class="line">                csv_file.write(str(x))</span><br><span class="line">                csv_file.write(&apos;,&apos;)</span><br><span class="line">                b=random.randrange(0,len(a),1)</span><br><span class="line">                csv_file.write(str(a[b]))</span><br><span class="line">                csv_file.write(&apos;\n&apos;)</span><br><span class="line">                a.pop(b)</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></p>
+<h4 id="首先设计一个-真随机-的模拟摇号程序"><a href="#首先设计一个-真随机-的模拟摇号程序" class="headerlink" title="首先设计一个 真随机 的模拟摇号程序"></a>首先设计一个 <strong>真随机</strong> 的模拟摇号程序</h4><p>lottery.py</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;env python</span><br><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line">import random</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    base_path&#x3D;os.path.abspath(&#39;.&#39;)</span><br><span class="line">    raw_data_path&#x3D;os.path.join( base_path, &#39;raw_data&#39;)</span><br><span class="line"></span><br><span class="line">    if not os.path.exists(raw_data_path):</span><br><span class="line">        os.mkdir(raw_data_path)</span><br><span class="line"></span><br><span class="line">    for num in range(1,1000001):</span><br><span class="line">        with open(raw_data_path + &#39;&#x2F;&#39; + str(num) + &#39;.csv&#39;, &#39;w&#39;) as csv_file:</span><br><span class="line">            pass</span><br><span class="line"></span><br><span class="line">        with open(raw_data_path + &#39;&#x2F;&#39; + str(num) + &#39;.csv&#39;, &#39;a&#39;) as csv_file:</span><br><span class="line">            a&#x3D;list(range(1,12525))</span><br><span class="line">            for x in range(1,12525):</span><br><span class="line">                csv_file.write(str(x))</span><br><span class="line">                csv_file.write(&#39;,&#39;)</span><br><span class="line">                b&#x3D;random.randrange(0,len(a),1)</span><br><span class="line">                csv_file.write(str(a[b]))</span><br><span class="line">                csv_file.write(&#39;\n&#39;)</span><br><span class="line">                a.pop(b)</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
 <p>这个程序，将在当前目录下，生成一个子目录<code>raw_data</code>，在子目录里面，生成1.csv、2.csv……1000000.csv，一共百万个文档。</p>
 <p>每个文档中，存放了1次模拟摇号的结果。</p>
 <p>需要注意5点：</p>
@@ -412,15 +312,19 @@
 <li>即便支持，也不要随便去子目录<code>raw_data</code>操作，以免卡顿（不要问我怎么知道的）</li>
 <li>可以通过命令<code>find ./raw_data/* -type f | wc -l</code>观察生成进度，<code>ls</code>命令不行（不要问我怎么知道的）</li>
 </ol>
-<h4 id="第二个程序是统计，也就是生成上面所说的矩阵"><a href="#第二个程序是统计，也就是生成上面所说的矩阵" class="headerlink" title="第二个程序是统计，也就是生成上面所说的矩阵"></a>第二个程序是统计，也就是生成上面所说的矩阵</h4><p>statistics.py<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line">import csv</span><br><span class="line">import numpy</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    base_path=os.path.abspath(&apos;.&apos;)</span><br><span class="line">    raw_data_path=os.path.join( base_path, &apos;raw_data&apos;)</span><br><span class="line">    statistical_data_path=os.path.join( base_path, &apos;statistical_data&apos;)</span><br><span class="line"></span><br><span class="line">    if not os.path.exists(raw_data_path):</span><br><span class="line">        exit(1)</span><br><span class="line">    if not os.path.exists(statistical_data_path):</span><br><span class="line">        os.mkdir(statistical_data_path)</span><br><span class="line"></span><br><span class="line">    for num in range(1,1000001):</span><br><span class="line">        lis=[]</span><br><span class="line"></span><br><span class="line">        with open(raw_data_path + &apos;/&apos; + str(num) + &apos;.csv&apos;, &apos;r&apos;) as csv_file:</span><br><span class="line">            reader = csv.reader(csv_file)</span><br><span class="line">            for row in reader:</span><br><span class="line">                lis.append(row)</span><br><span class="line"></span><br><span class="line">        mat=numpy.zeros((31, 31), dtype=numpy.int)</span><br><span class="line"></span><br><span class="line">        for x,y in lis:</span><br><span class="line">            p=(int(x)-1)//404</span><br><span class="line">            q=(int(y)-1)//404</span><br><span class="line">            mat[p][q]=mat[p][q]+1</span><br><span class="line"></span><br><span class="line">        numpy.savetxt(statistical_data_path + &apos;/&apos; + str(num) + &apos;.csv&apos;, mat, delimiter = &apos;,&apos; ,fmt=&apos;%s&apos;,newline=&apos;\n&apos;)  </span><br><span class="line"></span><br><span class="line">        with open(base_path + &apos;/&apos; + &apos;variance.csv&apos;, &apos;a&apos;) as csv_file:</span><br><span class="line">            csv_file.write(str(mat[0].var()))</span><br><span class="line">            csv_file.write(&apos;\n&apos;)</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></p>
+<h4 id="第二个程序是统计，也就是生成上面所说的矩阵"><a href="#第二个程序是统计，也就是生成上面所说的矩阵" class="headerlink" title="第二个程序是统计，也就是生成上面所说的矩阵"></a>第二个程序是统计，也就是生成上面所说的矩阵</h4><p>statistics.py</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;env python</span><br><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line">import csv</span><br><span class="line">import numpy</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    base_path&#x3D;os.path.abspath(&#39;.&#39;)</span><br><span class="line">    raw_data_path&#x3D;os.path.join( base_path, &#39;raw_data&#39;)</span><br><span class="line">    statistical_data_path&#x3D;os.path.join( base_path, &#39;statistical_data&#39;)</span><br><span class="line"></span><br><span class="line">    if not os.path.exists(raw_data_path):</span><br><span class="line">        exit(1)</span><br><span class="line">    if not os.path.exists(statistical_data_path):</span><br><span class="line">        os.mkdir(statistical_data_path)</span><br><span class="line"></span><br><span class="line">    for num in range(1,1000001):</span><br><span class="line">        lis&#x3D;[]</span><br><span class="line"></span><br><span class="line">        with open(raw_data_path + &#39;&#x2F;&#39; + str(num) + &#39;.csv&#39;, &#39;r&#39;) as csv_file:</span><br><span class="line">            reader &#x3D; csv.reader(csv_file)</span><br><span class="line">            for row in reader:</span><br><span class="line">                lis.append(row)</span><br><span class="line"></span><br><span class="line">        mat&#x3D;numpy.zeros((31, 31), dtype&#x3D;numpy.int)</span><br><span class="line"></span><br><span class="line">        for x,y in lis:</span><br><span class="line">            p&#x3D;(int(x)-1)&#x2F;&#x2F;404</span><br><span class="line">            q&#x3D;(int(y)-1)&#x2F;&#x2F;404</span><br><span class="line">            mat[p][q]&#x3D;mat[p][q]+1</span><br><span class="line"></span><br><span class="line">        numpy.savetxt(statistical_data_path + &#39;&#x2F;&#39; + str(num) + &#39;.csv&#39;, mat, delimiter &#x3D; &#39;,&#39; ,fmt&#x3D;&#39;%s&#39;,newline&#x3D;&#39;\n&#39;)  </span><br><span class="line"></span><br><span class="line">        with open(base_path + &#39;&#x2F;&#39; + &#39;variance.csv&#39;, &#39;a&#39;) as csv_file:</span><br><span class="line">            csv_file.write(str(mat[0].var()))</span><br><span class="line">            csv_file.write(&#39;\n&#39;)</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
 <p>这个程序，将在当前目录下，生成一个子目录<code>statistical_data</code>，在子目录里面，生成1.csv、2.csv……1000000.csv，一共百万个文档。</p>
 <p>每个文档中，存放了1次模拟摇号所生成的矩阵。</p>
 <p>另外，还有一个附加功能，就是在当前目录下生成了 <code>variance.csv</code> 文件。</p>
 <p>这个文件保存了每次摇号矩阵第一行的方差值，一共有百万条记录。</p>
 <p>提示：如果不需要复验，其实可以将程序1、2合并成一个程序，省略中间环节，直接生成 <code>variance.csv</code> 文件，可以大大加速。</p>
-<h4 id="第三个程序根据-variance-csv-显示方差概率分布"><a href="#第三个程序根据-variance-csv-显示方差概率分布" class="headerlink" title="第三个程序根据 variance.csv 显示方差概率分布"></a>第三个程序根据 <code>variance.csv</code> 显示方差概率分布</h4><p>normal.py<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line">import numpy</span><br><span class="line">import scipy</span><br><span class="line">from scipy import stats</span><br><span class="line">import matplotlib</span><br><span class="line">matplotlib.use(&apos;Agg&apos;)</span><br><span class="line">from matplotlib import pyplot</span><br><span class="line">from matplotlib.font_manager import FontProperties</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line"></span><br><span class="line">    base_path=os.path.abspath(&apos;.&apos;)</span><br><span class="line"></span><br><span class="line">    if not os.path.isfile(base_path + &apos;/&apos; + &apos;variance.csv&apos; ):</span><br><span class="line">        exit(1)</span><br><span class="line"></span><br><span class="line">    lis=[]</span><br><span class="line"></span><br><span class="line">    with open(base_path + &apos;/&apos; + &apos;variance.csv&apos;, &apos;r&apos;) as csv_file:</span><br><span class="line">        for row in csv_file.readlines():</span><br><span class="line">            lis.append(float(row))</span><br><span class="line"></span><br><span class="line">    mean=sum(lis)/len(lis)</span><br><span class="line">    stdev=numpy.std(lis)</span><br><span class="line">    lis_range=(min(lis), max(lis))</span><br><span class="line">    x=numpy.linspace(lis_range[0], lis_range[1], 100)</span><br><span class="line">    normal=stats.norm(mean, stdev)</span><br><span class="line"></span><br><span class="line">    pyplot.rcParams[&apos;font.sans-serif&apos;] = &apos;SimHei&apos;</span><br><span class="line">    pyplot.rcParams[&apos;axes.unicode_minus&apos;] = False</span><br><span class="line"></span><br><span class="line">    pyplot.hist(lis, density=True ,bins=100, range=(min(lis)-1,max(lis)+1), color=&apos;green&apos;, label=u&apos;百万次模拟摇号&apos;, histtype=&apos;stepfilled&apos;)</span><br><span class="line">    pyplot.axvline(x=mean, color=&apos;yellow&apos;, linewidth=2)</span><br><span class="line"></span><br><span class="line">    t=20.740894901144642</span><br><span class="line">    pyplot.annotate(u&apos;本次摇号所在位置&apos;,xy=(t, normal.pdf(t)),xycoords=&apos;data&apos;,xytext=(+10, +30), textcoords=&apos;offset points&apos;, fontsize=16, arrowprops=dict(arrowstyle=&quot;-&gt;&quot;, connectionstyle=&quot;arc3,rad=.2&quot;))</span><br><span class="line"></span><br><span class="line">    print(normal.pdf(t))</span><br><span class="line">    print(normal.cdf(t))</span><br><span class="line"></span><br><span class="line">    pyplot.plot(x, normal.pdf(x), &apos;--&apos;, label=u&apos;标准正态分布&apos;, color=&apos;red&apos;, linewidth=2)</span><br><span class="line">    pyplot.xlabel(u&apos;前404号方差分布&apos;)</span><br><span class="line">    pyplot.title(u&apos;百万次模拟摇号，前404号方差分布图&apos;)</span><br><span class="line">    pyplot.legend()</span><br><span class="line">    pyplot.savefig(&quot;normal.png&quot;)</span><br><span class="line">    pyplot.close()</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure></p>
+<h4 id="第三个程序根据-variance-csv-显示方差概率分布"><a href="#第三个程序根据-variance-csv-显示方差概率分布" class="headerlink" title="第三个程序根据 variance.csv 显示方差概率分布"></a>第三个程序根据 <code>variance.csv</code> 显示方差概率分布</h4><p>normal.py</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;env python</span><br><span class="line"># -*- coding:utf-8 -*-</span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line">import numpy</span><br><span class="line">import scipy</span><br><span class="line">from scipy import stats</span><br><span class="line">import matplotlib</span><br><span class="line">matplotlib.use(&#39;Agg&#39;)</span><br><span class="line">from matplotlib import pyplot</span><br><span class="line">from matplotlib.font_manager import FontProperties</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line"></span><br><span class="line">    base_path&#x3D;os.path.abspath(&#39;.&#39;)</span><br><span class="line"></span><br><span class="line">    if not os.path.isfile(base_path + &#39;&#x2F;&#39; + &#39;variance.csv&#39; ):</span><br><span class="line">        exit(1)</span><br><span class="line"></span><br><span class="line">    lis&#x3D;[]</span><br><span class="line"></span><br><span class="line">    with open(base_path + &#39;&#x2F;&#39; + &#39;variance.csv&#39;, &#39;r&#39;) as csv_file:</span><br><span class="line">        for row in csv_file.readlines():</span><br><span class="line">            lis.append(float(row))</span><br><span class="line"></span><br><span class="line">    mean&#x3D;sum(lis)&#x2F;len(lis)</span><br><span class="line">    stdev&#x3D;numpy.std(lis)</span><br><span class="line">    lis_range&#x3D;(min(lis), max(lis))</span><br><span class="line">    x&#x3D;numpy.linspace(lis_range[0], lis_range[1], 100)</span><br><span class="line">    normal&#x3D;stats.norm(mean, stdev)</span><br><span class="line"></span><br><span class="line">    pyplot.rcParams[&#39;font.sans-serif&#39;] &#x3D; &#39;SimHei&#39;</span><br><span class="line">    pyplot.rcParams[&#39;axes.unicode_minus&#39;] &#x3D; False</span><br><span class="line"></span><br><span class="line">    pyplot.hist(lis, density&#x3D;True ,bins&#x3D;100, range&#x3D;(min(lis)-1,max(lis)+1), color&#x3D;&#39;green&#39;, label&#x3D;u&#39;百万次模拟摇号&#39;, histtype&#x3D;&#39;stepfilled&#39;)</span><br><span class="line">    pyplot.axvline(x&#x3D;mean, color&#x3D;&#39;yellow&#39;, linewidth&#x3D;2)</span><br><span class="line"></span><br><span class="line">    t&#x3D;20.740894901144642</span><br><span class="line">    pyplot.annotate(u&#39;本次摇号所在位置&#39;,xy&#x3D;(t, normal.pdf(t)),xycoords&#x3D;&#39;data&#39;,xytext&#x3D;(+10, +30), textcoords&#x3D;&#39;offset points&#39;, fontsize&#x3D;16, arrowprops&#x3D;dict(arrowstyle&#x3D;&quot;-&gt;&quot;, connectionstyle&#x3D;&quot;arc3,rad&#x3D;.2&quot;))</span><br><span class="line"></span><br><span class="line">    print(normal.pdf(t))</span><br><span class="line">    print(normal.cdf(t))</span><br><span class="line"></span><br><span class="line">    pyplot.plot(x, normal.pdf(x), &#39;--&#39;, label&#x3D;u&#39;标准正态分布&#39;, color&#x3D;&#39;red&#39;, linewidth&#x3D;2)</span><br><span class="line">    pyplot.xlabel(u&#39;前404号方差分布&#39;)</span><br><span class="line">    pyplot.title(u&#39;百万次模拟摇号，前404号方差分布图&#39;)</span><br><span class="line">    pyplot.legend()</span><br><span class="line">    pyplot.savefig(&quot;normal.png&quot;)</span><br><span class="line">    pyplot.close()</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+
 <p>这个程序使用了 <code>matplotlib</code> 的绘图功能，画出了下面这个分布图：</p>
-<p><img src="\images\variance_normal.png" alt="normal"></p>
+<p><img src="%5Cimages%5Cvariance_normal.png" alt="normal"></p>
 <p>黄色的竖线表示中值，红色曲线是标准正态分布，绿色是实际的分布，可以看出绿色近似拟合红色曲线。</p>
 <p>可以清晰的看到，本次摇号所在的位置。</p>
 <p>按照正态分布公式计算，本次摇号的pdf（概率密度函数）是：0.003189864384789601 ，而cdf（累计分布函数）是：0.9966758306307064</p>
@@ -434,259 +338,166 @@
 <p>本文在 <strong>合理质疑</strong> 摇号的 <strong>随机性</strong>。不针对 <strong>是否有内幕</strong> 提出任何质疑。</p>
 <h2 id="以为这就结束了？其实还没有。"><a href="#以为这就结束了？其实还没有。" class="headerlink" title="以为这就结束了？其实还没有。"></a>以为这就结束了？其实还没有。</h2><p>未完待续……</p>
 
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/摇号/" rel="tag"># 摇号</a>
-          
-            <a href="/tags/随机性/" rel="tag"># 随机性</a>
-          
-            <a href="/tags/方差/" rel="tag"># 方差</a>
-          
-            <a href="/tags/python/" rel="tag"># python</a>
-          
-            <a href="/tags/统计学/" rel="tag"># 统计学</a>
-          
-            <a href="/tags/佳兆业/" rel="tag"># 佳兆业</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/04/04/open_source_series_1_nextcloud/" rel="next" title="忘了痛或许可以，忘了你却太不容易——那些丢失的文件啊……">
-                <i class="fa fa-chevron-left"></i> 忘了痛或许可以，忘了你却太不容易——那些丢失的文件啊……
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/15/nanjing_jiazhaoye_2/" rel="prev" title="假设内定100人 + 百万摇号 = 质疑加深">
-                假设内定100人 + 百万摇号 = 质疑加深 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
     </div>
 
-  
+    
+    
+    
 
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%91%87%E5%8F%B7/" rel="tag"># 摇号</a>
+              <a href="/tags/%E9%9A%8F%E6%9C%BA%E6%80%A7/" rel="tag"># 随机性</a>
+              <a href="/tags/%E6%96%B9%E5%B7%AE/" rel="tag"># 方差</a>
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/%E7%BB%9F%E8%AE%A1%E5%AD%A6/" rel="tag"># 统计学</a>
+              <a href="/tags/%E4%BD%B3%E5%85%86%E4%B8%9A/" rel="tag"># 佳兆业</a>
+          </div>
 
-
-        </div>
         
-          
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/04/04/open_source_series_1_nextcloud/" rel="prev" title="忘了痛或许可以，忘了你却太不容易——那些丢失的文件啊……">
+      <i class="fa fa-chevron-left"></i> 忘了痛或许可以，忘了你却太不容易——那些丢失的文件啊……
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/06/15/nanjing_jiazhaoye_2/" rel="next" title="假设内定100人 + 百万摇号 = 质疑加深">
+      假设内定100人 + 百万摇号 = 质疑加深 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
     </div>
   </div>
+  
 
-  <aside id="sidebar" class="sidebar">
-    
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.JPG"
-                alt="Lich" />
-            
-              <p class="site-author-name" itemprop="name">Lich</p>
-              <p class="site-description motion-element" itemprop="description">IT</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">11</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">38</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/mu4yu3" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="mailto:mu4yu3@gmail.com" target="_blank" title="E-Mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
-            </div>
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#缘起"><span class="nav-number">1.</span> <span class="nav-text">缘起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#太长不看版"><span class="nav-number">2.</span> <span class="nav-text">太长不看版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#百万摇号实验过程"><span class="nav-number">3.</span> <span class="nav-text">百万摇号实验过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据来源"><span class="nav-number">3.1.</span> <span class="nav-text">数据来源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计思路"><span class="nav-number">3.2.</span> <span class="nav-text">设计思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#人生苦短，我用python"><span class="nav-number">3.3.</span> <span class="nav-text">人生苦短，我用python</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#首先设计一个-真随机-的模拟摇号程序"><span class="nav-number">3.3.1.</span> <span class="nav-text">首先设计一个 真随机 的模拟摇号程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二个程序是统计，也就是生成上面所说的矩阵"><span class="nav-number">3.3.2.</span> <span class="nav-text">第二个程序是统计，也就是生成上面所说的矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三个程序根据-variance-csv-显示方差概率分布"><span class="nav-number">3.3.3.</span> <span class="nav-text">第三个程序根据 variance.csv 显示方差概率分布</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以为这就结束了？其实还没有。"><span class="nav-number">4.</span> <span class="nav-text">以为这就结束了？其实还没有。</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#缘起"><span class="nav-number">1.</span> <span class="nav-text">缘起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#太长不看版"><span class="nav-number">2.</span> <span class="nav-text">太长不看版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#百万摇号实验过程"><span class="nav-number">3.</span> <span class="nav-text">百万摇号实验过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据来源"><span class="nav-number">3.1.</span> <span class="nav-text">数据来源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计思路"><span class="nav-number">3.2.</span> <span class="nav-text">设计思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#人生苦短，我用python"><span class="nav-number">3.3.</span> <span class="nav-text">人生苦短，我用python</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#首先设计一个-真随机-的模拟摇号程序"><span class="nav-number">3.3.1.</span> <span class="nav-text">首先设计一个 真随机 的模拟摇号程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二个程序是统计，也就是生成上面所说的矩阵"><span class="nav-number">3.3.2.</span> <span class="nav-text">第二个程序是统计，也就是生成上面所说的矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三个程序根据-variance-csv-显示方差概率分布"><span class="nav-number">3.3.3.</span> <span class="nav-text">第三个程序根据 variance.csv 显示方差概率分布</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以为这就结束了？其实还没有。"><span class="nav-number">4.</span> <span class="nav-text">以为这就结束了？其实还没有。</span></a></li></ol></div>
+      </div>
       <!--/noindex-->
-      
 
-      
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lich"
+      src="/images/avatar.JPG">
+  <p class="site-author-name" itemprop="name">Lich</p>
+  <div class="site-description" itemprop="description">IT</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/mu4yu3" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;mu4yu3" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mu4yu3@gmail.com" title="E-Mail → mailto:mu4yu3@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Lich</span>
-
-  
 </div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
-
-
-
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
 
         
 
@@ -696,182 +507,79 @@
 
 
 
-        
+
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
   </div>
 
   
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://lichs-blog.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
   }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
 </script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-    
-      <script id="dsq-count-scr" src="https://lichs-blog.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'https://mu4yu3.github.io/2018/06/13/nanjing_jiazhaoye/';
-          this.page.identifier = '2018/06/13/nanjing_jiazhaoye/';
-          this.page.title = '百万摇号 + 统计学 = 购房摇号合理质疑';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://lichs-blog.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://mu4yu3.github.io/2018/06/13/nanjing_jiazhaoye/";
+    this.page.identifier = "2018/06/13/nanjing_jiazhaoye/";
+    this.page.title = "百万摇号 + 统计学 = 购房摇号合理质疑";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://lichs-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
 
 </body>
 </html>

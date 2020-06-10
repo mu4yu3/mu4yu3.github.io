@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"mu4yu3.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="最近遇到一个技术问题，解决的时候比较有意思，记录之。 Jenkins 上的 job，从原先在 Centos 上运行，改为在 Arch Linux 上运行。 迁移完成后，job 可以正常跑，结果也是正常的，但发现 log 里的中文字符变乱码了。 刚开始觉得是小问题，没有在意，后来腾出时间来解决的时候，发现没想象中简单。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在 arch 系统的节点上，Jenkins 日志显示中文乱码">
+<meta property="og:url" content="https://mu4yu3.github.io/2020/06/10/jenkins_shows_messy_character_on_arch_nodes/index.html">
+<meta property="og:site_name" content="Lich&#39;s Blog">
+<meta property="og:description" content="最近遇到一个技术问题，解决的时候比较有意思，记录之。 Jenkins 上的 job，从原先在 Centos 上运行，改为在 Arch Linux 上运行。 迁移完成后，job 可以正常跑，结果也是正常的，但发现 log 里的中文字符变乱码了。 刚开始觉得是小问题，没有在意，后来腾出时间来解决的时候，发现没想象中简单。">
+<meta property="article:published_time" content="2020-06-10T08:25:43.000Z">
+<meta property="article:modified_time" content="2018-01-12T16:20:02.000Z">
+<meta property="article:author" content="Lich">
+<meta property="article:tag" content="Jenkins">
+<meta property="article:tag" content="Arch Linux">
+<meta property="article:tag" content="sshd">
+<meta property="article:tag" content="zh_CN">
+<meta property="article:tag" content="language">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://mu4yu3.github.io/2020/06/10/jenkins_shows_messy_character_on_arch_nodes/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>在 arch 系统的节点上，Jenkins 日志显示中文乱码 | Lich's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112234259-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-112234259-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lich's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Just do IT.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://mu4yu3.github.io/2020/06/10/jenkins_shows_messy_character_on_arch_nodes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.JPG">
+      <meta itemprop="name" content="Lich">
+      <meta itemprop="description" content="IT">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lich's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          在 arch 系统的节点上，Jenkins 日志显示中文乱码
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-06-10 16:25:43" itemprop="dateCreated datePublished" datetime="2020-06-10T16:25:43+08:00">2020-06-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2018-01-13 00:20:02" itemprop="dateModified" datetime="2018-01-13T00:20:02+08:00">2018-01-13</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2020/06/10/jenkins_shows_messy_character_on_arch_nodes/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/06/10/jenkins_shows_messy_character_on_arch_nodes/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>最近遇到一个技术问题，解决的时候比较有意思，记录之。</p>
+<p>Jenkins 上的 job，从原先在 Centos 上运行，改为在 Arch Linux 上运行。</p>
+<p>迁移完成后，job 可以正常跑，结果也是正常的，但发现 log 里的中文字符变乱码了。</p>
+<p>刚开始觉得是小问题，没有在意，后来腾出时间来解决的时候，发现没想象中简单。</p>
+<a id="more"></a>
+
+<p>首先检查编码，在 log 里出现的中文都是 UTF-8 的，之前显示也都是正常的。</p>
+<p>在 Arch Linux 上检查， <code>/etc/locale.gen</code> 和 <code>/etc/locale.conf</code> 已经配置好。</p>
+<p>感觉应该不是中文字体的原因，但还是在 Arch Linux 上安装了字体文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -S noto-fonts-cjk</span><br></pre></td></tr></table></figure>
+
+<p>重启，尝试一次，果然，问题没有解决。<strong>尝试一，失败。</strong></p>
+<p>有另一个运行正常，run 相同 job ，连接 fedora 节点，显示中文正常的 Jenkins。</p>
+<p>于是比较了这2个 Jenkins 的插件，发现正好有一个插件 <code>locale</code> 是第一个 Jenkins 没有的。</p>
+<p>感觉找到了原因，下载插件，配置 <code>Default Language</code> 为 <code>zh_CN</code>。</p>
+<p>感觉像是了，重启，再试一次。<strong>尝试二，失败。</strong></p>
+<p>顺着上面的思路，在 Jenkins 的 <code>Global properties</code> 里面配置 <code>Environment variables</code>。</p>
+<p>设置 <code>LANG</code> 的值为 <code>zh_CN.UTF-8</code>。</p>
+<p>同样的，在节点中，在 <code>Node Properties</code> 里面配置 <code>Environment variables</code> 。</p>
+<p>同样也是设置 <code>LANG</code> 的值为 <code>zh_CN.UTF-8</code>。</p>
+<p>节点强制断线重联。<strong>尝试三，失败。</strong></p>
+<p>问题陷入僵局。于是去洗澡，站在花洒下，是最有灵感的时刻之一。</p>
+<p>果然，成功想到了去比较 Jenkins 中，两个不同 node 的连接日志。</p>
+<p>对比日志，发现在 ssh 连接之后，获取 <code>user&#39;s environment</code> 中，Arch Linux 节点是没有 <code>LANG</code> 变量的。</p>
+<p>至此问题已经找到。</p>
+<p>搜索一番，找到这样一篇论坛帖子：</p>
+<ul>
+<li><a href="https://bbs.archlinux.org/viewtopic.php?id=249183" target="_blank" rel="noopener">ssh to arch system doesn’t set LANG</a></li>
+</ul>
+<p>参考其中的做法，在 <code>/etc/pam.d/sshd</code> 文件的尾部添加一行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">session    required   pam_env.so readenv&#x3D;1 envfile&#x3D;&#x2F;etc&#x2F;locale.conf</span><br></pre></td></tr></table></figure>
+
+<p><strong>问题解决。</strong></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Jenkins/" rel="tag"># Jenkins</a>
+              <a href="/tags/Arch-Linux/" rel="tag"># Arch Linux</a>
+              <a href="/tags/sshd/" rel="tag"># sshd</a>
+              <a href="/tags/zh-CN/" rel="tag"># zh_CN</a>
+              <a href="/tags/language/" rel="tag"># language</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/08/30/three_kingdoms_01/" rel="prev" title="在东汉，如果遇到了花臂男，反杀之后……">
+      <i class="fa fa-chevron-left"></i> 在东汉，如果遇到了花臂男，反杀之后……
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lich"
+      src="/images/avatar.JPG">
+  <p class="site-author-name" itemprop="name">Lich</p>
+  <div class="site-description" itemprop="description">IT</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/mu4yu3" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;mu4yu3" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mu4yu3@gmail.com" title="E-Mail → mailto:mu4yu3@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lich</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://lichs-blog.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://mu4yu3.github.io/2020/06/10/jenkins_shows_messy_character_on_arch_nodes/";
+    this.page.identifier = "2020/06/10/jenkins_shows_messy_character_on_arch_nodes/";
+    this.page.title = "在 arch 系统的节点上，Jenkins 日志显示中文乱码";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://lichs-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,335 +1,230 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"mu4yu3.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="智能家庭,smart home,Home Assistant,homebridge,HomeKit," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="Lich's Blog" type="application/atom+xml" />
-
-
-
-
-
-
-<meta name="description" content="引子家里有闲置的Android设备，有不限时、不限流量、拥有公网IP的宽带，总想着把它们利用起来。 Android基于一个修改版的linux内核，有大把的开源软件可以运行在这个操作系统上。 然而有一个问题，就是锂电池的使用与寿命，虽说是闲置、淘汰了的Android设备，但始终插着电源线充电显然不妥。 比较理想的方式是，建立一个自动化的充电机制： Android设备始终插着电源线，但并不是始终充电。">
-<meta name="keywords" content="智能家庭,smart home,Home Assistant,homebridge,HomeKit">
+  <meta name="description" content="引子家里有闲置的Android设备，有不限时、不限流量、拥有公网IP的宽带，总想着把它们利用起来。 Android基于一个修改版的linux内核，有大把的开源软件可以运行在这个操作系统上。 然而有一个问题，就是锂电池的使用与寿命，虽说是闲置、淘汰了的Android设备，但始终插着电源线充电显然不妥。 比较理想的方式是，建立一个自动化的充电机制： Android设备始终插着电源线，但并不是始终充电。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="智能家庭">
 <meta property="og:url" content="https://mu4yu3.github.io/2018/01/22/smart_home/index.html">
 <meta property="og:site_name" content="Lich&#39;s Blog">
 <meta property="og:description" content="引子家里有闲置的Android设备，有不限时、不限流量、拥有公网IP的宽带，总想着把它们利用起来。 Android基于一个修改版的linux内核，有大把的开源软件可以运行在这个操作系统上。 然而有一个问题，就是锂电池的使用与寿命，虽说是闲置、淘汰了的Android设备，但始终插着电源线充电显然不妥。 比较理想的方式是，建立一个自动化的充电机制： Android设备始终插着电源线，但并不是始终充电。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-24T15:20:29.000Z">
+<meta property="article:published_time" content="2018-01-22T12:02:53.000Z">
+<meta property="article:modified_time" content="2018-01-24T15:20:29.000Z">
+<meta property="article:author" content="Lich">
+<meta property="article:tag" content="智能家庭">
+<meta property="article:tag" content="smart home">
+<meta property="article:tag" content="Home Assistant">
+<meta property="article:tag" content="homebridge">
+<meta property="article:tag" content="HomeKit">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="智能家庭">
-<meta name="twitter:description" content="引子家里有闲置的Android设备，有不限时、不限流量、拥有公网IP的宽带，总想着把它们利用起来。 Android基于一个修改版的linux内核，有大把的开源软件可以运行在这个操作系统上。 然而有一个问题，就是锂电池的使用与寿命，虽说是闲置、淘汰了的Android设备，但始终插着电源线充电显然不妥。 比较理想的方式是，建立一个自动化的充电机制： Android设备始终插着电源线，但并不是始终充电。">
+
+<link rel="canonical" href="https://mu4yu3.github.io/2018/01/22/smart_home/">
 
 
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
   };
 </script>
 
-
-
-  <link rel="canonical" href="https://mu4yu3.github.io/2018/01/22/smart_home/"/>
-
-
-
-
-
   <title>智能家庭 | Lich's Blog</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112234259-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-112234259-1');
+      }
+    </script>
 
 
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-112234259-1', 'auto');
-  ga('send', 'pageview');
-</script>
 
 
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
 
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
 
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Lich's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-      
-        <p class="site-subtitle">Just do IT.</p>
-      
   </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Lich's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Just do IT.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
   </div>
 </div>
 
+
+
+
 <nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
+  <ul id="menu" class="menu">
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
         <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
 
-      
-    </ul>
-  
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
 
-  
+  </li>
+  </ul>
 </nav>
 
 
 
- </div>
+
+</div>
     </header>
 
-    <main id="main" class="main">
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content">
+          
+
+          <div class="content post posts-expand">
             
 
-  <div id="posts" class="posts-expand">
     
-
-  
-
   
   
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://mu4yu3.github.io/2018/01/22/smart_home/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lich">
-      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.JPG">
+      <meta itemprop="name" content="Lich">
+      <meta itemprop="description" content="IT">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Lich's Blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">智能家庭</h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+          智能家庭
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-22T20:02:53+08:00">
-                2018-01-22
-              </time>
-            
+              <span class="post-meta-item-text">Posted on</span>
 
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
+              <time title="Created: 2018-01-22 20:02:53" itemprop="dateCreated datePublished" datetime="2018-01-22T20:02:53+08:00">2018-01-22</time>
+            </span>
+              <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
+                  <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <a href="/2018/01/22/smart_home/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/22/smart_home/" itemprop="commentCount"></span>
-                </a>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2018-01-24 23:20:29" itemprop="dateModified" datetime="2018-01-24T23:20:29+08:00">2018-01-24</time>
               </span>
-            
-          
 
           
-          
-
-          
-
-          
-
-          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2018/01/22/smart_home/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/01/22/smart_home/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
-    
 
     
     
     
     <div class="post-body" itemprop="articleBody">
-
-      
-      
 
       
         <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>家里有闲置的Android设备，有不限时、不限流量、拥有公网IP的宽带，总想着把它们利用起来。</p>
@@ -346,6 +241,7 @@
 <p>使用米家app，把智能插座usb口的开关，放两个快捷方式在Android的桌面上，通过模拟屏幕操作点击。</p>
 <p>如此实现了自动化充电的机制，这时可以把Android设备视作一个linux server，或者说，更像是一个Raspberry Pi，可以放飞自我了。</p>
 <a id="more"></a>
+
 <h2 id="新的格局"><a href="#新的格局" class="headerlink" title="新的格局"></a>新的格局</h2><p>最近对HomeKit比较感兴趣。</p>
 <p>原本有一个iPhone 5s，升级了iOS11，正准备折腾一下HomeKit，结果这个手机在苏梅岛附近的Ko Ra Thian进了海水，上岸后没用了。</p>
 <p>计划搁浅。</p>
@@ -370,7 +266,7 @@
 <p><a href="https://github.com/termux/termux-app" target="_blank" rel="noopener">Termux</a>，<br>在Android系统提供了一个terminal，并提供了一个类debian的linux环境。</p>
 <p>Termux有一个限制，要求Android系统至少在5.0版本以上，有网友提出了低于5版本的支持请求，但<a href="https://github.com/termux/termux-app/issues/6" target="_blank" rel="noopener">被作者拒绝</a>了。Termux的好处是不强制要求root权限。</p>
 <p>Linux Deploy对Android版本没有5.0的限制要求，但要求root权限。</p>
-<p>这里再吐槽一下，家里闲置的是一位长辈淘汰下来的红米手机，有比较<a href="http://www.miui.com/search.php?mod=forum&amp;searchid=3764464&amp;orderby=dateline&amp;ascdesc=desc&amp;searchsubmit=yes&amp;kw=闪屏&amp;month=&amp;refineSearch=0" target="_blank" rel="noopener">严重的闪屏问题</a>。</p>
+<p>这里再吐槽一下，家里闲置的是一位长辈淘汰下来的红米手机，有比较<a href="http://www.miui.com/search.php?mod=forum&searchid=3764464&orderby=dateline&ascdesc=desc&searchsubmit=yes&kw=闪屏&month=&refineSearch=0" target="_blank" rel="noopener">严重的闪屏问题</a>。</p>
 <p>而且<a href="http://www.miui.com/download-82.html#131" target="_blank" rel="noopener">对应的miui</a>已经升级到8版本，可使用的还是Android4.4版本。</p>
 <p>所以这里使用了Linux Deploy。</p>
 <p>国内的手机没有google play，红米也没有CyanogenMod或者LineageOS的rom。</p>
@@ -380,18 +276,24 @@
 <p>在这里，把一张8G的TF卡格式化为ext4格式，在Linux Deploy设置安装类型为磁盘，安装路径定位到TF卡。</p>
 <p>安装了Fedora 27版本的系统，安装常用的软件（ssh、tmux、vim、git等），安装python3的环境：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install python3 python3-pip python3-virtualenv</span><br></pre></td></tr></table></figure>
+
 <h3 id="安装Home-Assistant"><a href="#安装Home-Assistant" class="headerlink" title="安装Home Assistant"></a>安装Home Assistant</h3><p>python3环境准备好以后，使用<code>virtualenv</code>建立一套“隔离”的python运行环境。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir homeassistant</span><br><span class="line">cd homeassistant/</span><br><span class="line">python3 -m virtualenv venv</span><br><span class="line">source venv/bin/activate</span><br><span class="line">python3 -m pip install homeassistant</span><br><span class="line">hass --open-ui</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir homeassistant</span><br><span class="line">cd homeassistant&#x2F;</span><br><span class="line">python3 -m virtualenv venv</span><br><span class="line">source venv&#x2F;bin&#x2F;activate</span><br><span class="line">python3 -m pip install homeassistant</span><br><span class="line">hass --open-ui</span><br></pre></td></tr></table></figure>
+
 <p>如果想要把hass运行在后台可以执行:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hass --open-ui --daemon</span><br></pre></td></tr></table></figure>
+
 <p>安装和启动hass的过程中，一般会自动安装有依赖关系的软件。</p>
 <p>如果有无法自动安装的，可以根据给出的错误提示，逐个寻找对应的软件安装。</p>
 <p>如果想偷懒，可以一股脑把常用的编译工具都装上：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf groupinstall &quot;C Development Tools and Libraries&quot;</span><br></pre></td></tr></table></figure>
+
 <p>有时候会提示某个库文件没找到，可以通过 <code>dnf provides</code> 命令来寻找对应的安装包，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf provides */opensslv.h</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dnf provides *&#x2F;opensslv.h</span><br></pre></td></tr></table></figure>
+
 <p>根据给出的提示，安装对应的软件包：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install openssl-devel</span><br></pre></td></tr></table></figure>
+
 <p>安装Home Assistant过程可以参考：<br><a href="https://home-assistant.io/getting-started/" target="_blank" rel="noopener">installation instructions</a>、<br><a href="https://sspai.com/post/39881" target="_blank" rel="noopener">入门智能家居，从 IFTTT 到 HomeKit 自动化（二）</a>、<br><a href="https://www.hachina.io/docs/355.html" target="_blank" rel="noopener">在Linux（树莓派）中安装Python3和HomeAssistant</a></p>
 <h3 id="配置Home-Assistant"><a href="#配置Home-Assistant" class="headerlink" title="配置Home Assistant"></a>配置Home Assistant</h3><p>Home Assistant目前支持959种<a href="https://home-assistant.io/components/" target="_blank" rel="noopener">components</a>，分别可以实现不同的扩展功能。</p>
 <p>这里用到了2个：</p>
@@ -403,10 +305,13 @@
 <p>使用这篇文章<a href="https://home-assistant.io/components/vacuum.xiaomi_miio/#retrieving-the-access-token" target="_blank" rel="noopener">Retrieving the Access Token</a>中描述的方法，先使用米家app连接设备，然后将 <code>/data/data/com.xiaomi.smarthome/databases/miio2.db</code> 用 <code>sqlite3</code> 打开。</p>
 <p>使用sql命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select name,localIP,token from devicerecord;</span><br></pre></td></tr></table></figure>
+
 <p>获取Token，按照文档格式要求写入配置文件：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">switch:</span><br><span class="line">  - platform: xiaomi_miio</span><br><span class="line">    name: Original Xiaomi Mi Smart WiFi Socket</span><br><span class="line">    host: 192.168.130.59</span><br><span class="line">    token: YOUR_TOKEN</span><br></pre></td></tr></table></figure>
+
 <p>最后一步是编写自动化规则，可以参考<a href="https://home-assistant.io/docs/automation/editor/" target="_blank" rel="noopener">官方文档</a>：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># Example automations.yaml entry</span><br><span class="line">- id: my_unique_id  # &lt;-- Required for editor to work.</span><br><span class="line">  alias: 90% USB Auto Shutdown</span><br><span class="line">  trigger:</span><br><span class="line">  - above: &apos;90&apos;</span><br><span class="line">    entity_id: sensor.battery</span><br><span class="line">    platform: numeric_state</span><br><span class="line">  condition:</span><br><span class="line">  - condition: state</span><br><span class="line">    entity_id: switch.original_xiaomi_mi_smart_wifi_socket_usb</span><br><span class="line">    state: &apos;on&apos;</span><br><span class="line">  action:</span><br><span class="line">  - data:</span><br><span class="line">      entity_id: switch.original_xiaomi_mi_smart_wifi_socket_usb</span><br><span class="line">    service: switch.turn_off</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># Example automations.yaml entry</span><br><span class="line">- id: my_unique_id  # &lt;-- Required for editor to work.</span><br><span class="line">  alias: 90% USB Auto Shutdown</span><br><span class="line">  trigger:</span><br><span class="line">  - above: &#39;90&#39;</span><br><span class="line">    entity_id: sensor.battery</span><br><span class="line">    platform: numeric_state</span><br><span class="line">  condition:</span><br><span class="line">  - condition: state</span><br><span class="line">    entity_id: switch.original_xiaomi_mi_smart_wifi_socket_usb</span><br><span class="line">    state: &#39;on&#39;</span><br><span class="line">  action:</span><br><span class="line">  - data:</span><br><span class="line">      entity_id: switch.original_xiaomi_mi_smart_wifi_socket_usb</span><br><span class="line">    service: switch.turn_off</span><br></pre></td></tr></table></figure>
+
 <p>以上规则实现了：当电池电量在90%以上时，如果小米插座的usb口是通电的，自动将其关闭。</p>
 <p>同理设置当电量低于40%时，如果usb是不通电的，自动将其打开。</p>
 <p>为什么是40%，而不是最初设想的20%。</p>
@@ -415,257 +320,165 @@
 <h2 id="放飞自我"><a href="#放飞自我" class="headerlink" title="放飞自我"></a>放飞自我</h2><p>解决了电量的后顾之忧，可以安心使用了。</p>
 <p>发挥想象力，可以做的事儿太多了。</p>
 
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/智能家庭/" rel="tag"># 智能家庭</a>
-          
-            <a href="/tags/smart-home/" rel="tag"># smart home</a>
-          
-            <a href="/tags/Home-Assistant/" rel="tag"># Home Assistant</a>
-          
-            <a href="/tags/homebridge/" rel="tag"># homebridge</a>
-          
-            <a href="/tags/HomeKit/" rel="tag"># HomeKit</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/01/10/usb_redirection/" rel="next" title="USB redirection 的实验记录">
-                <i class="fa fa-chevron-left"></i> USB redirection 的实验记录
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/29/letsencrypt_wildcard_certificates/" rel="prev" title="Let’s Encrypt的泛域名支持">
-                Let’s Encrypt的泛域名支持 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
     </div>
 
-  
+    
+    
+    
 
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%BA%AD/" rel="tag"># 智能家庭</a>
+              <a href="/tags/smart-home/" rel="tag"># smart home</a>
+              <a href="/tags/Home-Assistant/" rel="tag"># Home Assistant</a>
+              <a href="/tags/homebridge/" rel="tag"># homebridge</a>
+              <a href="/tags/HomeKit/" rel="tag"># HomeKit</a>
+          </div>
 
-
-        </div>
         
-          
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/01/10/usb_redirection/" rel="prev" title="USB redirection 的实验记录">
+      <i class="fa fa-chevron-left"></i> USB redirection 的实验记录
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/01/29/letsencrypt_wildcard_certificates/" rel="next" title="Let’s Encrypt的泛域名支持">
+      Let’s Encrypt的泛域名支持 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
     </div>
   </div>
+  
 
-  <aside id="sidebar" class="sidebar">
-    
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.JPG"
-                alt="Lich" />
-            
-              <p class="site-author-name" itemprop="name">Lich</p>
-              <p class="site-description motion-element" itemprop="description">IT</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">11</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">38</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/mu4yu3" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="mailto:mu4yu3@gmail.com" target="_blank" title="E-Mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
-            </div>
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新的格局"><span class="nav-number">2.</span> <span class="nav-text">新的格局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">3.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Linux-Deploy"><span class="nav-number">3.1.</span> <span class="nav-text">安装Linux Deploy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Home-Assistant"><span class="nav-number">3.2.</span> <span class="nav-text">安装Home Assistant</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Home-Assistant"><span class="nav-number">3.3.</span> <span class="nav-text">配置Home Assistant</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#放飞自我"><span class="nav-number">4.</span> <span class="nav-text">放飞自我</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新的格局"><span class="nav-number">2.</span> <span class="nav-text">新的格局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">3.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Linux-Deploy"><span class="nav-number">3.1.</span> <span class="nav-text">安装Linux Deploy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Home-Assistant"><span class="nav-number">3.2.</span> <span class="nav-text">安装Home Assistant</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Home-Assistant"><span class="nav-number">3.3.</span> <span class="nav-text">配置Home Assistant</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#放飞自我"><span class="nav-number">4.</span> <span class="nav-text">放飞自我</span></a></li></ol></div>
+      </div>
       <!--/noindex-->
-      
 
-      
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lich"
+      src="/images/avatar.JPG">
+  <p class="site-author-name" itemprop="name">Lich</p>
+  <div class="site-description" itemprop="description">IT</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/mu4yu3" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;mu4yu3" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mu4yu3@gmail.com" title="E-Mail → mailto:mu4yu3@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
-    <footer id="footer" class="footer">
+    <footer class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Lich</span>
-
-  
 </div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
-
-
-
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
 
         
 
@@ -675,182 +488,79 @@
 
 
 
-        
+
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
   </div>
 
   
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://lichs-blog.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
   }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
 </script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-    
-      <script id="dsq-count-scr" src="https://lichs-blog.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'https://mu4yu3.github.io/2018/01/22/smart_home/';
-          this.page.identifier = '2018/01/22/smart_home/';
-          this.page.title = '智能家庭';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://lichs-blog.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://mu4yu3.github.io/2018/01/22/smart_home/";
+    this.page.identifier = "2018/01/22/smart_home/";
+    this.page.title = "智能家庭";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://lichs-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
 
 </body>
 </html>
